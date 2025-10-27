@@ -17,7 +17,7 @@ var io = require("socket.io")(server, {
   },
 });
 
-var serverPort = process.env.PORT || 3001;
+// var serverPort = process.env.PORT || 3001; // <-- WE DO NOT NEED THIS LINE HERE
 
 var user_socket_connect_list = [];
 
@@ -57,6 +57,6 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-module.exports = app;
-server.listen(serverPort);
-console.log("Server Start: " + serverPort);
+// --- THIS IS THE CORRECTED PART ---
+// We export the app and the server, but we do NOT call listen()
+module.exports = { app: app, server: server };
